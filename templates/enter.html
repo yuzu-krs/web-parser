@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <h1>WTForm：入力</h1>
+{% endblock %}
+
+{% block content %}
+    <div style="color: red;">
+        {% if form.errors %}
+            <ul>
+            === エラーメッセージ ===
+            {% for k, v in form.errors.items() %}
+                <li>{{k}}:{{v}}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <!-- ▼▼▼リスト 5-10追加部分▼▼▼ -->
+    <form method="POST" novalidate>
+    <!-- ▲▲▲リスト 5-10追加部分▲▲▲ -->
+        {{ form.note.label }}{{ form.note(style="height:100px; width:150px")}}<br>
+        {{ form.submit() }}
+    </form>
+{% endblock %}
